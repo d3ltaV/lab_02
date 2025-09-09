@@ -13,11 +13,54 @@ class Restaurant:
     Methods:
         describe(), viewCategories(), addItem(), deleteItem()
     """
-    def __init__(self, name: str, location: str, cuisine: str, menu: List[Category]):
+    def __init__(self, name: str, location: str, cuisine: str, time: str, delivery: bool, menu: List[Category]):
         self.name = name
         self.location = location
         self.cuisine = cuisine
+        self.time = time
+        self.delivery = delivery
         self.menu = menu
     
-    def describe():
-        print()
+    def describe(self):
+        """
+        Describe this restaurant
+        Parameters: None
+        Returns: None
+        """
+        print(f"Welcome to restaurant {self.name}!")
+        print(f"We are located at the location: {self.location}, and we serve {self.cuisine}!")
+        print(f"We are open at {self.time}!")
+        if (self.delivery):
+            print("We do delivery!")
+        else:
+            print("We do not do delivery")
+        print("Here is what we serve: ")
+        for i in range(len(self.menu)):
+            print(f"{self.menu[i]}: ")
+
+    def addItem(self, category: Category, index: int):
+        """
+        Adds category to restaurant
+        Parameters: 
+            category (Category): category to add
+            index (int): index to add to
+        Returns: Success message (string)
+        """
+        self.menu.insert(index, category)
+        ret_msg = f"Added category {category.name} at index {index}!"
+        return ret_msg
+
+    def deleteItem(self, cat: Category):
+        """
+        Deletes category in restaurant
+        Parameters: 
+            cat (Category): category to delete
+        Returns: Success message (string) or error message (string)
+        """
+        if cat in self.menu:
+            self.menu.remove(cat)
+            ret_msg = f"Removed category: {cat.name}"
+            return ret_msg
+    
+        ret_msg = f"Category {cat} not found!"
+        return ret_msg
