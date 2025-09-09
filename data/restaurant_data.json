@@ -3,16 +3,14 @@
     "location": "1 Lamplighter Way, 01354",
     "cuisine": "Korean",
     "menu": [
-    {
+
         {"id": "1", "name": "Korean Pork Belly", "price": 15.99, "description": "Grilled pork belly served with a side of kimchi and rice.", "ingredients": ["pork belly", "kimchi", "rice", "garlic"]},
         {"id": "2", "name": "Bibimbap", "price": 12.99, "description": "A bowl of warm rice topped with vegetables, beef, a fried egg, and gochujang sauce.", "ingredients": ["rice", "vegetables", "beef", "egg", "gochujang"]},
         {"id": "3", "name": "Kimchi Stew", "price": 10.99, "description": "A spicy stew made with kimchi, tofu, and pork.", "ingredients": ["kimchi", "tofu", "pork", "green onions"]},
-        {"id": "4", "name": "Japchae", "price": 11.99, "description": "Stir-fried glass noodles with vegetables and beef.", "ingredients": },
+        {"id": "4", "name": "Japchae", "price": 11.99, "description": "Stir-fried glass noodles with vegetables and beef.", "ingredients": ["glass noodles", "vegetables", "beef", "soy sauce"]},
+        {"id": "5", "name": "Tteokbokki", "price": 9.99, "description": "Spicy rice cakes cooked in a sweet and spicy sauce.", "ingredients": ["rice cakes", "gochujang", "fish cakes", "green onions"]
     
     }
-
-
-
 
 ]
 }
