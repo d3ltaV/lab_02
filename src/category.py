@@ -13,8 +13,15 @@ class Category:
         """
         print(f"Here is a list of items in category {self.category}!")
         for i in range(len(self.items)):
-            print(f"{self.items[i]}: ")
+            self.items[i].describemenu()
 
+    def dict(self):
+        return {
+            "id": self.id,
+            "category": self.category,
+            "items": [item.dict for item in self.items]
+        }
+    
     def addItem(self, item: MenuItem, index: int):
         """
         Adds item to category

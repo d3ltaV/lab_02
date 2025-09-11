@@ -3,7 +3,7 @@
     "location": "1 Lamplighter Way, 01354",
     "cuisine": "Korean",
     "time": "11:00 AM - 10:00 PM",
-    "devlivery": true,
+    "delivery": true,
     "menu": [
         {
             "category": "Appetizer",
