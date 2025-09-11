@@ -20,6 +20,16 @@ class Restaurant:
         self.time = time
         self.delivery = delivery
         self.menu = menu
+
+    def dict(self):
+        return {
+            "name": self.name,
+            "location": self.location,
+            "cuisine": self.cuisine,
+            "time": self.time,
+            "delivery": self.delivery,
+            "menu": [cat.to_dict() for cat in self.menu]
+        }
     
     def describe(self):
         """
@@ -36,8 +46,8 @@ class Restaurant:
             print("We do not do delivery")
         print("Here is what we serve: ")
         for i in range(len(self.menu)):
-            print(f"{self.menu[i]}: ")
-
+            self.menu[i].describe()
+    
     def addItem(self, category: Category, index: int):
         """
         Adds category to restaurant

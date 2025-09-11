@@ -12,10 +12,21 @@ def loadData(path):
     try:
         with open(path, 'r') as f:
             info = json.load(f)
+            return info
     except FileNotFoundError:
         print(f"Error: The file '{path}' was not found.")
     except Exception as e:
         print(e)
+
+def createRestaurant(info):
+    categories = []
+    for cat in info["menu"]:
+        it = []
+        for i in cat["items"]:
+            it.append(MenuItem(id=i["id"], name=i["name"], price=i["price"], description=i["description"], ingredients=i["ingredients"] ))
+        categories.append(Category(id=cat["id"], category=cat["category"], items=it))
+    res = Restaurant(name=info["restaurant"], location=info["location"], cuisine=info["cuisine"], time=info["time"], delivery=info["delivery"], menu=categories)
+    return res
 
 def showUserChoices():
     print("1. View Menu")
@@ -90,8 +101,9 @@ def deleteItem():
                 print(f"Item {x} not found.")
     return
 
-def updateFile():
-    return
+def updateFile(path, restaurant: Restaurant):
+    with open(path, 'w') as f:
+        json.dump(restaurant.dict(), f)
 
 def searchItem():
     return
