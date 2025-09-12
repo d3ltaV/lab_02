@@ -34,7 +34,7 @@ class Category:
         return {
             "id": self.id,
             "category": self.category,
-            "items": [item.dict for item in self.items]
+            "items": [item.dict() for item in self.items]
         }
     
     def addItem(self, item: MenuItem, index: int):
@@ -45,8 +45,8 @@ class Category:
             index (int): index to add to
         Returns: Success message (string)
         """
-        self.menu.insert(index, item)
-        ret_msg = f"Added category {item.name} at index {index}!"
+        self.items.insert(index, item)
+        ret_msg = f"Added item {item.name} at index {index}!"
         return ret_msg
 
     def deleteItem(self, item: MenuItem):
@@ -57,9 +57,9 @@ class Category:
         Returns: Success message (string) or error message (string)
         """
         if item in self.items:
-            self.menu.remove(item)
-            ret_msg = f"Removed category: {item.name}"
+            self.items.remove(item)
+            ret_msg = f"Removed item: {item.name}"
             return ret_msg
     
-        ret_msg = f"Category {item.name} not found!"
+        ret_msg = f"Item {item.name} not found!"
         return ret_msg

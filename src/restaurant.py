@@ -49,7 +49,7 @@ class Restaurant:
             "cuisine": self.cuisine,
             "time": self.time,
             "delivery": self.delivery,
-            "menu": [cat.to_dict() for cat in self.menu]
+            "menu": [cat.dict() for cat in self.menu]
         }
     
     def addItem(self, category: Category, index: int):
@@ -61,7 +61,7 @@ class Restaurant:
         Returns: Success message (string)
         """
         self.menu.insert(index, category)
-        ret_msg = f"Added category {category.name} at index {index}!"
+        ret_msg = f"Added category {category.category} at index {index}!"
         return ret_msg
 
     def deleteItem(self, cat: Category):
@@ -73,7 +73,7 @@ class Restaurant:
         """
         if cat in self.menu:
             self.menu.remove(cat)
-            ret_msg = f"Removed category: {cat.name}"
+            ret_msg = f"Removed category: {cat.category}"
             return ret_msg
     
         ret_msg = f"Category {cat} not found!"
