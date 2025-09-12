@@ -1,5 +1,4 @@
 from category import Category
-from typing import List
 class Restaurant:
     """
     A restaurant defined by its name, location, cuisine, and menu
@@ -11,9 +10,9 @@ class Restaurant:
         menu (list): list of menu categories, with each category having a list of items
     
     Methods:
-        describe(), viewCategories(), addItem(), deleteItem()
+        describe(), dict(), addItem(), deleteItem()
     """
-    def __init__(self, name: str, location: str, cuisine: str, time: str, delivery: bool, menu: List[Category]):
+    def __init__(self, name: str, location: str, cuisine: str, time: str, delivery: bool, menu: list[Category]):
         self.name = name
         self.location = location
         self.cuisine = cuisine
@@ -21,16 +20,6 @@ class Restaurant:
         self.delivery = delivery
         self.menu = menu
 
-    def dict(self):
-        return {
-            "name": self.name,
-            "location": self.location,
-            "cuisine": self.cuisine,
-            "time": self.time,
-            "delivery": self.delivery,
-            "menu": [cat.to_dict() for cat in self.menu]
-        }
-    
     def describe(self):
         """
         Describe this restaurant
@@ -47,6 +36,21 @@ class Restaurant:
         print("Here is what we serve: ")
         for i in range(len(self.menu)):
             self.menu[i].describe()
+            
+    def dict(self):
+        """
+        Makes a dictionary of this restaurant
+        Parameters: None
+        Returns: dictionary of the restaurant
+        """
+        return {
+            "name": self.name,
+            "location": self.location,
+            "cuisine": self.cuisine,
+            "time": self.time,
+            "delivery": self.delivery,
+            "menu": [cat.to_dict() for cat in self.menu]
+        }
     
     def addItem(self, category: Category, index: int):
         """

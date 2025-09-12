@@ -1,7 +1,17 @@
 from menuitems import MenuItem
-from typing import List
 class Category:
-    def __init__(self, id: int, category: str, items: List[MenuItem]):
+    """
+    A category defined by its id, name/category, and list of items
+
+    Attributes:
+        category (string): name of the category
+        id (int): id of the category
+        items (list): list of categories items
+    
+    Methods:
+        describe(), dict(), addItem(), deleteItem()
+    """
+    def __init__(self, id: int, category: str, items: list[MenuItem]):
         self.id = id
         self.category = category
         self.items = items
@@ -16,6 +26,11 @@ class Category:
             self.items[i].describemenu()
 
     def dict(self):
+        """
+        Makes a dictionary of this category
+        Parameters: None
+        Returns: dictionary of the category
+        """
         return {
             "id": self.id,
             "category": self.category,
