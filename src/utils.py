@@ -64,15 +64,20 @@ def viewRestaurant(restaurant: Restaurant):
     return
 
 def viewCategory(restaurant: Restaurant):
-    x=input("Enter category name: ")
+    x = input("Enter category name: ")
     for i in restaurant.menu:
-        if i.category == x:
-            i.category.describe()
+        if i.category.lower() == x.lower():
+            i.describe()
     return
 
-def searchItem():
+def searchItem(restaurant: Restaurant):
     s = input("What item do you want to search? Plesae enter the exact name to learn more about it.")
-
+    for cat in restaurant.menu:
+        for i in cat.items:
+            if (i.name.lower() == s.lower()):
+                i.describemenu()
+                return
+    print("Item not found!")
     return
 
 def editRestaurant(restaurant: Restaurant):
@@ -140,16 +145,15 @@ def addItem(restaurant: Restaurant):
     return
 
 #debug
-def deleteItem():
-    x=input("Enter item name to delete: ")
-    for i in Restaurant.menu:
+def deleteItem(restaurant: Restaurant):
+    x = input("Enter item name to delete: ")
+    for i in restaurant.menu:
         for j in i.items:
             if j.name == x:
                 i.deleteItem(j)
                 print(f"Item {x} has been deleted.")
                 return
-            else:
-                print(f"Item {x} not found.")
+    print(f"Item {x} not found.")
     return
 
 def updateItem(restaurant: Restaurant):
@@ -190,6 +194,7 @@ def updateItem(restaurant: Restaurant):
             else:
                 print(f"Item {x} not found.")   
     return
+
 def updateFile(path, restaurant: Restaurant):
     with open(path, 'w') as f:
         json.dump(restaurant.dict(), f)
