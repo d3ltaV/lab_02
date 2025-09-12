@@ -1,0 +1,41 @@
+{
+    "restaurant": "K-Restaurant",
+    "location": "1 Lamplighter Way, 01354",
+    "cuisine": "Korean",
+    "time": "11:00 AM - 10:00 PM",
+    "delivery": true,
+    "menu": [
+        {
+            "category": "Appetizer",
+            "id": 1,
+            "items": [
+                 {"id": "1", "name": "Japchae", "price": 11.99, "description": "Stir-fried glass noodles with vegetables and beef.", "ingredients": ["glass noodles", "vegetables", "beef", "soy sauce"]},
+                 {"id": "2", "name": "Tteokbokki", "price": 9.99, "description": "Spicy rice cakes cooked in a sweet and spicy sauce.", "ingredients": ["rice cakes", "gochujang", "fish cakes", "green onions"]},
+                 {"id": "3", "name": "Pajeon", "price": 6.99, "description": "Korean savory pancake with green onions and seafood.", "ingredients": ["flour", "green onions", "seafood", "egg"]},
+                 {"id": "4", "name": "Kimbap", "price": 7.99, "description": "Rice rolls filled with vegetables and meat, wrapped in seaweed.", "ingredients": ["rice", "seaweed", "vegetables", "meat"]},
+                 {"id": "5", "name": "Dumpling", "price": 5.99, "description": "Korean dumpling with vegetables and beef broth.", "ingredients": ["dumplings", "vegetables", "beef broth", "green onions"]}
+            ]
+        },
+        {
+            "category": "Main Course",
+            "id": 2,
+            "items": [
+                {"id": "6", "name": "Korean Pork Belly", "price": 15.99, "description": "Grilled pork belly served with a side of kimchi and rice.", "ingredients": ["pork belly", "kimchi", "rice", "garlic"]},
+                {"id": "7", "name": "Bibimbap", "price": 12.99, "description": "A bowl of warm rice topped with vegetables, beef, a fried egg, and gochujang sauce.", "ingredients": ["rice", "vegetables", "beef", "egg", "gochujang"]},
+                {"id": "8", "name": "Kimchi Stew", "price": 10.99, "description": "A spicy stew made with kimchi, tofu, and pork.", "ingredients": ["kimchi", "tofu", "pork", "green onions"]},
+                {"id": "9", "name": "Bulgogi", "price": 14.99, "description": "Marinated beef grilled to perfection, served with rice and vegetables.", "ingredients": ["beef", "soy sauce", "sugar", "garlic", "vegetables"]},
+                {"id": "10", "name": "Galbi", "price": 16.99, "description": "Korean BBQ short ribs marinated in a sweet and savory sauce.", "ingredients": ["short ribs", "soy sauce", "sugar", "garlic", "pear"]},
+                {"id": "11", "name": "Sundubu Jjigae", "price": 13.99, "description": "Spicy soft tofu stew with seafood and vegetables.", "ingredients": ["soft tofu", "seafood", "vegetables", "gochujang"]}
+            ]
+        },
+        {
+            "category": "Dessert",
+            "id": 3,
+            "items": [
+                {"id": "1", "name": "Mochi Ice Cream", "price": 4.99, "description": "Sweet rice cake filled with ice cream.", "ingredients": ["rice flour", "sugar", "ice cream"]},
+                {"id": "2", "name": "Hotteok", "price": 3.99, "description": "Korean sweet pancakes filled with brown sugar and nuts.", "ingredients": ["flour", "brown sugar", "nuts", "cinnamon"]},
+                {"id": "3", "name": "Bingsu", "price": 5.99, "description": "Shaved ice dessert topped with sweet red beans, fruit, and condensed milk.", "ingredients": ["shaved ice", "red beans", "fruit", "condensed milk"]}
+            ]
+        }
+    ]
+}

@@ -28,7 +28,7 @@ def createRestaurant(info):
     res = Restaurant(name=info["restaurant"], location=info["location"], cuisine=info["cuisine"], time=info["time"], delivery=info["delivery"], menu=categories)
     return res
 
-def showUserChoices(res: Restaurant):
+def showUserChoices(res: Restaurant, path: str):
     print("1. View Menu")
     print("2. View Category")
     print("3. Add Menu Item")
@@ -53,7 +53,7 @@ def showUserChoices(res: Restaurant):
     elif choice == '7':
         searchItem(res)
     elif choice == '8':
-        updateFile()
+        updateFile(path, res)
         print("Updates have been saved. Exiting...")
     else:   
         print("Invalid choice. Please try again.")
@@ -68,10 +68,12 @@ def viewCategory(restaurant: Restaurant):
     for i in restaurant.menu:
         if i.category.lower() == x.lower():
             i.describe()
+            return
+    print("Category not found!")
     return
 
 def searchItem(restaurant: Restaurant):
-    s = input("What item do you want to search? Plesae enter the exact name to learn more about it.")
+    s = input("What item do you want to search? Plesae enter the exact name to learn more about it: ")
     for cat in restaurant.menu:
         for i in cat.items:
             if (i.name.lower() == s.lower()):
@@ -81,6 +83,7 @@ def searchItem(restaurant: Restaurant):
     return
 
 def editRestaurant(restaurant: Restaurant):
+    print("Here are the options for editing the restaurant: ")
     while True:
         print("1. Edit Name")
         print("2. Edit Location")
@@ -91,22 +94,22 @@ def editRestaurant(restaurant: Restaurant):
         if choice == '1':
             n = input("Enter new name: ")
             restaurant.name = n
-            print("Name updated.")
+            print(f"Name updated to {restaurant.name}")
             break
         elif choice == '2':
             l = input("Enter new location: ")
             restaurant.location = l
-            print("Location updated.")
+            print(f"Location updated to {restaurant.location}")
             break
         elif choice == '3':
             c = input("Enter new cuisine: ")
             restaurant.cuisine = c
-            print("Cuisine updated.")
+            print(f"Cuisine updated to {restaurant.cuisine}")
             break
         elif choice == '4':
             t = input("Enter new hours: ")
             restaurant.time = t
-            print("Hours updated.")
+            print(f"Hours updated to {restaurant.time}")
             break
         elif choice == '5':
             d = input("Does the restaurant do delivery? (yes/no): ")
@@ -126,32 +129,30 @@ def editRestaurant(restaurant: Restaurant):
         return
 
 def addItem(restaurant: Restaurant):
-    y=input("Which menu would you like to add?: ")
+    y=input("What is the name of the item you would you like to add?: ")
     p=input("What is the price of the item?: ")
     d=input("Please give a description of the item: ")
     ing=input("Please list the ingredients of the item, separated by commas: ")
     ing_list = ing.split(",")
     new_item = MenuItem(0, y, p, d, ing_list)
-    cat = input("At which category would you like to add it?(appetizer, main, dessert): ")
-    valid = True    
-    while (valid):
-        ind= int(input("At which index would you like to add it?: "))
-        if (ind < 0 or ind > len(restaurant.menu)):
-            print("Invalid index. Please try again.")
-        else: break
+    cat = input("At which category would you like to add it? (appetizer, main, dessert): ") 
+    ind= int(input("At which index would you like to add it?: "))
+
     for c in restaurant.menu:
-        if c.category == cat:
-            c.addItem(new_item, ind)
+        if c.category.lower() == cat.lower():
+            msg = c.addItem(new_item, ind)
+            print(msg)
+            return
+    print("Category not found!")
     return
 
-#debug
 def deleteItem(restaurant: Restaurant):
     x = input("Enter item name to delete: ")
     for i in restaurant.menu:
         for j in i.items:
             if j.name == x:
-                i.deleteItem(j)
-                print(f"Item {x} has been deleted.")
+                msg = i.deleteItem(j)
+                print(msg)
                 return
     print(f"Item {x} not found.")
     return
@@ -161,7 +162,7 @@ def updateItem(restaurant: Restaurant):
     x=input("Enter item name to update: ")
     for i in restaurant.menu:
         for j in i.items:
-            if j.name == x:
+            if j.name.lower() == x.lower():
                 print("1. Update Name")
                 print("2. Update Price")
                 print("3. Update Description")
@@ -191,8 +192,7 @@ def updateItem(restaurant: Restaurant):
                 else:
                     print("Invalid choice. Please try again.")
                     return
-            else:
-                print(f"Item {x} not found.")   
+    print(f"Item {x} not found.")   
     return
 
 def updateFile(path, restaurant: Restaurant):
