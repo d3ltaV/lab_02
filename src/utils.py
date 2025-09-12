@@ -28,7 +28,7 @@ def createRestaurant(info):
     res = Restaurant(name=info["restaurant"], location=info["location"], cuisine=info["cuisine"], time=info["time"], delivery=info["delivery"], menu=categories)
     return res
 
-def showUserChoices():
+def showUserChoices(restaurant: Restaurant):
     print("1. View Menu")
     print("2. Add Menu Item")
     print("3. Remove Menu Item")
@@ -50,8 +50,8 @@ def showUserChoices():
     elif choice == '6':
         searchItem()
     elif choice == '7':
+        updateFile()
         print("Updates have been saved. Exiting...")
-        exit()
     else:   
         print("Invalid choice. Please try again.")
     return
@@ -65,6 +65,11 @@ def viewCategory(restaurant: Restaurant):
     for i in restaurant.menu:
         if i.category == x:
             i.category.describe()
+    return
+
+def searchItem():
+    s = input("What item do you want to search? Plesae enter the exact name to learn more about it.")
+
     return
 
 def editRestaurant():
@@ -89,6 +94,7 @@ def addItem(restaurant: Restaurant):
             c.addItem(new_item, ind)
     return
 
+#debug
 def deleteItem():
     x=input("Enter item name to delete: ")
     for i in Restaurant.menu:
@@ -101,15 +107,8 @@ def deleteItem():
                 print(f"Item {x} not found.")
     return
 
+def updateItem():
+    return
 def updateFile(path, restaurant: Restaurant):
     with open(path, 'w') as f:
         json.dump(restaurant.dict(), f)
-
-def searchItem():
-    return
-
-def searchCategory():
-    return
-
-def exit():
-    return
