@@ -19,6 +19,12 @@ def loadData(path):
         print(e)
 
 def createRestaurant(info):
+    """
+    Create a restaurant object from the json data
+    Parameters
+        info (dict): dictionary of the restaurant data
+    Returns: Restaurant object
+    """
     categories = []
     for cat in info["menu"]:
         it = []
@@ -29,6 +35,12 @@ def createRestaurant(info):
     return res
 
 def showUserChoices(res: Restaurant, path: str):
+    """
+    Show the user the choices they can make
+    Parameters:
+        res (Restaurant): the restaurant object
+    Returns: None
+    """
     print("1. View Menu")
     print("2. View Category")
     print("3. Add Menu Item")
@@ -60,10 +72,22 @@ def showUserChoices(res: Restaurant, path: str):
     return
 
 def viewRestaurant(restaurant: Restaurant):
+    """
+    View the restaurant info
+    Parameters:
+        restaurant (Restaurant): the restaurant object
+    Returns: None
+    """
     restaurant.describe()
     return
 
 def viewCategory(restaurant: Restaurant):
+    """
+    View a specific category in the restaurant
+    Parameters:
+        restaurant (Restaurant): the restaurant object
+    Returns: None
+    """
     x = input("Enter category name: ")
     for i in restaurant.menu:
         if i.category.lower() == x.lower():
@@ -73,6 +97,12 @@ def viewCategory(restaurant: Restaurant):
     return
 
 def searchItem(restaurant: Restaurant):
+    """
+    Search for a specific item in the restaurant
+    Parameters:
+        restaurant (Restaurant): the restaurant object
+    Returns: None
+    """
     s = input("What item do you want to search? Plesae enter the exact name to learn more about it: ")
     for cat in restaurant.menu:
         for i in cat.items:
@@ -83,6 +113,12 @@ def searchItem(restaurant: Restaurant):
     return
 
 def editRestaurant(restaurant: Restaurant):
+    """
+    Edit the restaurant info
+    Parameters:
+        restaurant (Restaurant): the restaurant object
+    Returns: None
+    """
     print("Here are the options for editing the restaurant: ")
     while True:
         print("1. Edit Name")
@@ -123,14 +159,18 @@ def editRestaurant(restaurant: Restaurant):
                 break
             else:
                 print("Invalid input.")
-                return
         else:
             print("Invalid choice. Please try again.")
-        return
 
 def addItem(restaurant: Restaurant):
+    """
+    Add a new item to a category in the restaurant
+    Parameters:
+        restaurant (Restaurant): the restaurant object
+    Returns: None
+    """
     y=input("What is the name of the item you would you like to add?: ")
-    p=input("What is the price of the item?: ")
+    p=float(input("What is the price of the item?: "))
     d=input("Please give a description of the item: ")
     ing=input("Please list the ingredients of the item, separated by commas: ")
     ing_list = ing.split(",")
@@ -147,6 +187,12 @@ def addItem(restaurant: Restaurant):
     return
 
 def deleteItem(restaurant: Restaurant):
+    """
+    Delete an item from a category in the restaurant
+    Parameters:
+        restaurant (Restaurant): the restaurant object
+    Returns: None
+    """
     x = input("Enter item name to delete: ")
     for i in restaurant.menu:
         for j in i.items:
@@ -158,6 +204,12 @@ def deleteItem(restaurant: Restaurant):
     return
 
 def updateItem(restaurant: Restaurant):
+    """
+    Update an item in a category in the restaurant
+    Parameters:
+        restaurant (Restaurant): the restaurant object
+    Returns: None
+    """
     print("Which item would you like to update?")
     x=input("Enter item name to update: ")
     for i in restaurant.menu:
@@ -196,5 +248,12 @@ def updateItem(restaurant: Restaurant):
     return
 
 def updateFile(path, restaurant: Restaurant):
+    """
+    Update the json file with the current restaurant data
+    Parameters:
+        path (string): path of the json file
+        restaurant (Restaurant): the restaurant object
+    Returns: None
+    """
     with open(path, 'w') as f:
         json.dump(restaurant.dict(), f)
