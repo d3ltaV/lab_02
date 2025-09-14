@@ -7,8 +7,11 @@ def main():
     info = loadData(path)
     restaurant = createRestaurant(info)
     print("We created an object of your restaurant.")
+    print()
+
     do = input("Do you want to work on the restaurant? (yes/no): ")
     if (do):
+        print()
         while True:
             print("Choose an option from the following: ")
             showUserChoices(restaurant, path)

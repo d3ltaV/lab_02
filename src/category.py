@@ -21,6 +21,9 @@ class Category:
         Parameters: None
         Returns: None
         """
+        print()
+        print("-----------------------------------------------------------------------------------")
+        print()
         print(f"Here is a list of items in category {self.category}!")
         for i in range(len(self.items)):
             self.items[i].describemenu()
