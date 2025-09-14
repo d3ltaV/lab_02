@@ -26,16 +26,23 @@ class Restaurant:
         Parameters: None
         Returns: None
         """
+        print()
+        print("-----------------------------------------------------------------------------------")
+        print()
         print(f"Welcome to restaurant {self.name}!")
-        print(f"We are located at the location: {self.location}, and we serve {self.cuisine}!")
+        print(f"We are located at the location: {self.location}, and we serve {self.cuisine} food!")
         print(f"We are open at {self.time}!")
         if (self.delivery):
             print("We do delivery!")
         else:
             print("We do not do delivery")
+        print()
+        print("MENU")
         print("Here is what we serve: ")
         for i in range(len(self.menu)):
             self.menu[i].describe()
+        print()
+        print("-----------------------------------------------------------------------------------")
             
     def dict(self):
         """

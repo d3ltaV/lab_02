@@ -40,6 +40,7 @@ class MenuItem:
         Parameters: None
         Returns: None
         """
+        print()
         print("Menu Item: " + self.name
             + "\nPrice: $" + str(self.price)
             + "\nDescription: " + self.description
