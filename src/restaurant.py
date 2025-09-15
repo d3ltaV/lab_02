@@ -51,7 +51,7 @@ class Restaurant:
         Returns: dictionary of the restaurant
         """
         return {
-            "name": self.name,
+            "restaurant": self.name,
             "location": self.location,
             "cuisine": self.cuisine,
             "time": self.time,
