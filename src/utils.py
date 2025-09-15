@@ -69,6 +69,7 @@ def showUserChoices(res: Restaurant, path: str):
         print("Updates have been saved. Exiting...")
     else:   
         print("Invalid choice. Please try again.")
+        showUserChoices(res, path)
     return
 
 def viewRestaurant(restaurant: Restaurant):
@@ -170,7 +171,13 @@ def addItem(restaurant: Restaurant):
     Returns: None
     """
     y=input("What is the name of the item you would you like to add?: ")
-    p=float(input("What is the price of the item?: "))
+    while True:
+        p=input("What is the price of the item?: ")
+        try: 
+            p = float(p)
+            break
+        except ValueError:
+            print("Enter a number!")
     d=input("Please give a description of the item: ")
     ing=input("Please list the ingredients of the item, separated by commas: ")
     ing_list = ing.split(",")
