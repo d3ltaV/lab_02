@@ -182,7 +182,7 @@ def addItem(restaurant: Restaurant):
     ing=input("Please list the ingredients of the item, separated by commas: ")
     ing_list = ing.split(",")
     new_item = MenuItem(0, y, p, d, ing_list)
-    cat = input("At which category would you like to add it? (appetizer, main, dessert): ") 
+    cat = input("At which category would you like to add it? (appetizer, main course, dessert): ") 
     ind= int(input("At which index would you like to add it?: "))
 
     for c in restaurant.menu:
