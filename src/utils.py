@@ -233,7 +233,13 @@ def updateItem(restaurant: Restaurant):
                     print("Name updated.")
                     return
                 elif choice == '2':
-                    p = input("Enter new price: ")
+                    while True:
+                        p=input("Enter a new price: ")
+                        try: 
+                            p = float(p)
+                            break
+                        except ValueError:
+                            print("Enter a number!")
                     j.price = p
                     print("Price updated.")
                     return
